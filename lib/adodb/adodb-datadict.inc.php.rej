@@ -1,0 +1,18 @@
+--- datadict-postgres.inc.php
++++ datadict-postgres.inc.php
+@@ -193,7 +193,9 @@
+ 	   if ($has_alter_column) {
+ 	      $tabname = $this->TableName($tabname);
+ 	      $sql = array();
+-	      list($lines,$pkey) = $this->_GenFields($flds);
++	      // Avoid use of SERIAL when altering an existing column
++	      // 2014-04-14 by AS
++	      list($lines,$pkey) = $this->_GenFields($flds, false, false);
+ 		  $set_null = false;
+ 	      $alter = 'ALTER TABLE ' . $tabname . $this->alterCol . ' ';
+ 	      foreach($lines as $v) {
+@@ -599,4 +601,4 @@
+ 		return $sql;
+ 	}
+ }
+-?>+?>
