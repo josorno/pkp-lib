@@ -68,6 +68,9 @@
 					{else}
 						</div>
 					{/if}
+					<div class="my_issn_container">
+						<span>ISSN: 2594-0694</span>
+					</div>
 				</div>
 
 				{* Primary site navigation *}
